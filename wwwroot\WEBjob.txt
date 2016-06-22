@@ -1,0 +1,44 @@
+﻿
+Sub-domains [ 6 chapters ] 
+
+Main page 
+
+Latest chapter needs to come up  [26]  –change post 
+abstracts 
+Changing the menu 
+
+registration forum 
+
+pdf [-0-]
+Close Links 
+Set up as a Bulletin
+Plug in
+Bylaws 
+Flashing  text 
+
+
+
+Reason why you cannot change the top half of the homepage 
+Under reading settings, its set up to show the latest posts not a static page.
+Therefore, if you wanted a home page that could be edited like another page, you would have 
+to create a new page and change the Reading settings to a static page and select the new page you made
+ 
+
+Reading Settings
+	 Front page displays 	 Front page displays  Your latest posts  A static page (select below) 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+

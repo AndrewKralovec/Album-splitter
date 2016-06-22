@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div ng-app="fileUpload" ng-controller="MyCtrl" class="myMain">
+	<form name="myForm">
+		<fieldset><br/>
+		File:
+		<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" ngf-max-size="100MB" required="" ngf-model-invalid="errorFile"/>
+			<i ng-show="myForm.file.$error.required">*required</i><br/><i ng-show="myForm.file.$error.maxSize">
+			File too largeA
+			{{errorFile.size / 1000000|number:1}}MB: max 100M
+			</i>
+		<img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"/>
+		<button ng-click="picFile = null" ng-show="picFile">Remove</button><br/>
+		<div ng-repeat="record in records" class="filesAdd">
+			<p>Song properties</p>
+			<legend>Name of file</legend> File:
+			<input type="text" name="File" style="vertical-align:top;" ng-model="record.name" size="31" placeholder="Song Title" required=""/>
+				<i ng-show="myForm.File.$error.required">*required</i>
+			<legend>Start time</legend> Time:
+			<input type="text" name="Time" style="vertical-align:top;" ng-model="record.offset" size="31" placeholder="00:00:00" required=""/>
+				<i ng-show="myForm.Time.$error.required">*required</i><i ng-show="myForm.Time.$error.time">*Not valid time 00:00:00</i>
+			<legend>Length of file</legend> Length:
+			<input type="text" name="Length" ng-model="record.length" size="31" placeholder="00:00:00" required=""/>
+				<i ng-show="myForm.Length.$error.required">*required</i><i ng-show="myForm.Length.$error.time">*Not valid time 00:00:00</i><br/>
+			<button ng-disabled="!myForm.$valid" ng-click="add(record)">Submit File</button>
+		</div>
+		<div class="currentFiles">
+			<p>Current Song Queue</p>
+			<table>
+				<tr>
+					<th>Title</th>
+					<th>Start Time</th>
+					<th>Length</th>
+				</tr>
+				<tr ng-repeat="item in items">
+					<td>{{item.name}} </td>
+					<td>{{item.offset}} </td>
+					<td>{{item.length}}</td>
+				</tr>
+			</table>
+			<button ng-click="remove()">Remove Song </button>
+		</div>
+		<button ng-disabled="!myForm.$valid" ng-click="addNew()">Add Song to Queue</button>
+		<button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Split Track</button>
+		<span ng-show="picFile.progress &gt;= 0" class="progress">
+			<div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'">
+			</div>
+		</span>
+		<span ng-show="picFile.result">Upload Successful</span><span ng-show="errorMsg" class="err">
+			{{errorMsg}}
+		</span>
+		</fieldset><br/>
+	</form>
+</div>
